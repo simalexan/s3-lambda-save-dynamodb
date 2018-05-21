@@ -10,17 +10,16 @@ exports.handler = (event) => {
     return Promise.all(S3Objects.map(saveToDynamoDB));
 };
 
-saveToDynamoDb = (data) => {
+saveToDynamoDB = (data) => {
     if (!data) {
         return Promise.resolve();
     }
-
     data[PRIMARY_KEY] = uuidv4();
     let params = {
         TableName: TABLE_NAME,
         Item: data
     }
-    return dynamoDb.put(params)
+    return docClient.put(params)
         .promise()
         .then(response => response)
         .catch(err => {
