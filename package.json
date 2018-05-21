@@ -1,0 +1,14 @@
+{
+  "name": "s3-lambda-save-dynamodb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "package": "aws cloudformation package --template-file template.yaml --output-template-file output.yaml --s3-bucket s3-lambda-save-dynamodb-bucket",
+    "deploy": "aws cloudformation deploy --template-file output.yaml --stack-name s3-lambda-save-dynamodb --capabilities CAPABILITY_IAM",
+    "qd": "npm run package && npm run deploy"
+  },
+  "keywords": [],
+  "author": "Aleksandar Simovic <alexander.simovic@gmail.com>",
+  "license": "MIT"
+}
